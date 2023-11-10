@@ -1,5 +1,5 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, UniqueConstraintError } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Alumno extends Model {
     static associate(models) {
@@ -8,17 +8,50 @@ module.exports = (sequelize, DataTypes) => {
   }
   Alumno.init(
     {
-      carnet_al: DataTypes.INTEGER,
-      dpi: DataTypes.INTEGER,
-      nombres: DataTypes.STRING,
-      apellidos: DataTypes.STRING,
-      nacimiento: DataTypes.DATE,
-      telefono: DataTypes.INTEGER,
-      direccion: DataTypes.STRING,
-      carrera: DataTypes.STRING,
-      tfc_id: DataTypes.INTEGER,
-      carne_prof: DataTypes.INTEGER,
-      no_grupo: DataTypes.INTEGER,
+      carnet_al:{ 
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+      },
+      dpi: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      nombres: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+      },
+      apellidos: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+      },
+      nacimiento: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+      },
+      telefono: {
+        type: DataTypes.INTEGER
+      },
+      direccion: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+      },
+      carrera: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+      },
+      tfc_id:{
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
+      carne_prof: {
+        type: DataTypes.STRING(50),
+        allowNull: false
+      },
+      no_grupo: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+      },
     },
     {
       sequelize,

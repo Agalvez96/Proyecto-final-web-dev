@@ -14,10 +14,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Comite.init({
-    com_id: DataTypes.INTEGER,
+    com_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     exa_loc: DataTypes.STRING,
     fecha_for: DataTypes.DATE,
-    no_integrantes: DataTypes.INTEGER
+    no_integrantes: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   }, {
     sequelize,
       modelName: "Comite",
